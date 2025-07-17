@@ -1,0 +1,31 @@
+name: Daily Credit Reset
+
+on:
+  schedule:
+    - cron: '*/2 * * * *' # Runs at 12:00 AM IST (6:30 PM UTC)
+  workflow_dispatch:
+
+jobs:
+  reset-credits:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cron
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run credit reset script
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          CRON_SECRET_TOKEN: ${{ secrets.CRON_SECRET_TOKEN }}
+          NODE_ENV: 'development'
+        run: node resetTokens/index.js

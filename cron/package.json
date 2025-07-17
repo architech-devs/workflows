@@ -1,0 +1,18 @@
+{
+  "name": "architech-cron",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "resetTokens/index.js",
+  "scripts": {
+    "test": "node resetTokens/index.js",
+    "dev": "NODE_ENV=development node resetTokens/index.js",
+    "test-cron": "node test-cron.js"
+  },
+  "dependencies": {
+    "mongoose": "^8.15.1",
+    "dotenv": "^16.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 
