@@ -2,7 +2,7 @@ name: Daily Credit Reset
 
 on:
   schedule:
-    - cron: '*/1 * * * *' # Runs at 12:00 AM IST (6:30 PM UTC)
+    - cron: '*/5 * * * *' # Runs at 12:00 AM IST (6:30 PM UTC)
   workflow_dispatch:
 
 jobs:
